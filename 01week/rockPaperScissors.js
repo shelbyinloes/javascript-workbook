@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 });
 
 
-const rockPaperScissors=(hand1, hand2)=>{
+rockPaperScissors=(hand1, hand2)=>{
   if (hand1 === hand2) {
     return "It's a tie!";
   }else if (hand1 === 'rock') {
