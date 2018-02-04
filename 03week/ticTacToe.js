@@ -28,6 +28,9 @@ function horizontalWin() {
   // [0][0] && [0][1] && [0][2]
   // [1][0] && [1][1] && [1][2]
   // [2][0] && [2][1] && [2][2]
+  if(([0][0] === "X") && ([0][1] === "X") && ([0][2] === "X")) {
+    return true;
+  }
 }
 
 function verticalWin() {
@@ -35,21 +38,43 @@ function verticalWin() {
   // [0][0] && [1][0] && [2][0]
   // [0][1] && [1][1] && [2][1]
   // [0][2] && [1][2] && [2][2]
+  if(([0][0] && [1][0] && [2][0]) || ([0][1] && [1][1] && [2][1]) || ([0][2] && [1][2] && [2][2]) === playerTurn) {
+    return true;
+  }
 }
 
 function diagonalWin() {
   // Your code here
   // [0][0] && [1][1] && [2][2]
   // [0][2] && [1][1] && [2][0]
+  if (([0][0] && [1][1] && [2][2]) || ([0][2] && [1][1] && [2][0]) === playerTurn) {
+    return true;
+  }
 }
 
 function checkForWin() {
   // Your code here
-  // if(horizontalWin() || verticalWin() || diagonalWin()){}
+  if(horizontalWin() || verticalWin() || diagonalWin()){
+    return "Player " + playerTurn + " wins!!";
+  }
 }
 
 function ticTacToe(row, column) {
-  
+  if(board[row][column] === ' '){
+    board[row][column] = playerTurn;
+    if (checkForWin()) {
+      console.log("You win!")
+      playerTurn = "X";
+    }else{
+      if(playerTurn === "X"){
+        playerTurn = "O";
+      }else{
+        playerTurn = "X";
+      }
+    }
+  }else{
+    return "Please select empty square.";
+  }
 }
 
 function getPrompt() {
