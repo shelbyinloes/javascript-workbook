@@ -10,17 +10,18 @@ const rl = readline.createInterface({
 const findFirstVowelPosition = (word) => {
   for (var i=0; i<word.length; i++){
     if("aeiou".indexOf(word[i]) !== -1) {
-      return i;
+      return (i);
     }
   }
 }
 
 const pigLatin = (word) => {
-  const firstPosition = findFirstVowelPosition(word);
+  const formattedWord = word.trim();
+  const firstPosition = findFirstVowelPosition(formattedWord);
   if (firstPosition > 0) {
-    return (word.slice(firstPosition) + word.slice(0, firstPosition) + 'ay').toLowerCase();
+    return (formattedWord.slice(firstPosition) + formattedWord.slice(0, firstPosition) + 'ay').toLowerCase();
   }else{
-    return (word + 'yay').trim().toLowerCase();
+    return (formattedWord + 'yay').toLowerCase();
   }
 }
 
