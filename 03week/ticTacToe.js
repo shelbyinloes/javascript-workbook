@@ -28,8 +28,14 @@ function horizontalWin() {
   // [0][0] && [0][1] && [0][2]
   // [1][0] && [1][1] && [1][2]
   // [2][0] && [2][1] && [2][2]
-  if(([0][0] === "X") && ([0][1] === "X") && ([0][2] === "X")) {
+  if((board[0][0] === playerTurn) && (board[0][1] === playerTurn) && (board[0][2] === playerTurn)) {
     return true;
+  } else if ((board[1][0] === playerTurn) && (board[1][1] === playerTurn) && (board[1][2] === playerTurn)){
+    return true;
+  } else if ((board[2][0] === playerTurn) && (board[2][1] === playerTurn) && (board[2][2] === playerTurn)){
+    return true;
+  } else {
+    return false;
   }
 }
 
@@ -38,8 +44,14 @@ function verticalWin() {
   // [0][0] && [1][0] && [2][0]
   // [0][1] && [1][1] && [2][1]
   // [0][2] && [1][2] && [2][2]
-  if(([0][0] && [1][0] && [2][0]) || ([0][1] && [1][1] && [2][1]) || ([0][2] && [1][2] && [2][2]) === playerTurn) {
+  if((board[0][0] === playerTurn) && (board[1][0] === playerTurn) && (board[2][0] === playerTurn)) {
     return true;
+  } else if ((board[0][1] === playerTurn) && (board[1][1] === playerTurn) && (board[2][1] === playerTurn)){
+    return true;
+  } else if ((board[0][2] === playerTurn) && (board[1][2] === playerTurn) && (board[2][2] === playerTurn)){
+    return true;
+  } else {
+    return false;
   }
 }
 
@@ -47,15 +59,20 @@ function diagonalWin() {
   // Your code here
   // [0][0] && [1][1] && [2][2]
   // [0][2] && [1][1] && [2][0]
-  if (([0][0] && [1][1] && [2][2]) || ([0][2] && [1][1] && [2][0]) === playerTurn) {
+  if((board[0][0] === playerTurn) && (board[1][1] === playerTurn) && (board[2][2] === playerTurn)) {
     return true;
+  } else if ((board[0][2] === playerTurn) && (board[1][1] === playerTurn) && (board[2][0] === playerTurn)){
+    return true;
+  } else {
+    return false;
   }
 }
 
 function checkForWin() {
-  // Your code here
   if(horizontalWin() || verticalWin() || diagonalWin()){
-    return "Player " + playerTurn + " wins!!";
+    return true;
+  }else{
+    return false;
   }
 }
 
@@ -63,8 +80,13 @@ function ticTacToe(row, column) {
   if(board[row][column] === ' '){
     board[row][column] = playerTurn;
     if (checkForWin()) {
-      console.log("You win!")
-      playerTurn = "X";
+      let board = [
+        [' ', ' ', ' '],
+        [' ', ' ', ' '],
+        [' ', ' ', ' ']
+      ];
+      return true;
+      // playerTurn = "X";
     }else{
       if(playerTurn === "X"){
         playerTurn = "O";
@@ -73,7 +95,7 @@ function ticTacToe(row, column) {
       }
     }
   }else{
-    return "Please select empty square.";
+    return false;
   }
 }
 
