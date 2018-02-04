@@ -7,20 +7,20 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const pigLatin = (word) => {
-  const firstPosition = findFirstVowelPosition(word);
-  if (firstPosition > 0) {
-    return word.slice(firstPosition) + word.slice(0, firstPosition) + 'ay';
-  }else{
-    return word + 'way';
-  }
-}
-
 const findFirstVowelPosition = (word) => {
   for (var i=0; i<word.length; i++){
     if("aeiou".indexOf(word[i]) !== -1) {
       return i;
     }
+  }
+}
+
+const pigLatin = (word) => {
+  const firstPosition = findFirstVowelPosition(word);
+  if (firstPosition > 0) {
+    return (word.slice(firstPosition) + word.slice(0, firstPosition) + 'ay').toLowerCase();
+  }else{
+    return (word + 'yay').trim().toLowerCase();
   }
 }
 
