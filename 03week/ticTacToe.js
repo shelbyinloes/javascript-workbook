@@ -25,22 +25,32 @@ function printBoard() {
 
 function horizontalWin() {
   // Your code here
+  // [0][0] && [0][1] && [0][2]
+  // [1][0] && [1][1] && [1][2]
+  // [2][0] && [2][1] && [2][2]
+
 }
 
 function verticalWin() {
   // Your code here
+  // [0][0] && [1][0] && [2][0]
+  // [0][1] && [1][1] && [2][1]
+  // [0][2] && [1][2] && [2][2]
 }
 
 function diagonalWin() {
   // Your code here
+  // [0][0] && [1][1] && [2][2]
+  // [0][2] && [1][1] && [2][0]
 }
 
 function checkForWin() {
   // Your code here
+  // if(horizontalWin() || verticalWin() || diagonalWin()){}
 }
 
 function ticTacToe(row, column) {
-  // Your code here
+  
 }
 
 function getPrompt() {
