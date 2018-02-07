@@ -1,5 +1,16 @@
 'use strict';
 
+//Towers Rubric
+// Move piece from stack to stack (17)
+// Working is legal function (17)
+// Working check for win function (17)
+// Working reset function (17)
+// Legal Move function  ( 8)
+// Clean PR , es6 syntax (8)
+// Function plan in comments (each function has a stated purpose and method) (8)
+// At least 2 tests (8)
+
+
 const assert = require('assert');
 const readline = require('readline');
 const rl = readline.createInterface({
@@ -38,7 +49,7 @@ function isLegal() {
 
 function checkForWin() {
   // Your code here
-  // Does stacks.c contain [4, 3, 2, 1]? If yes, you won!
+  // Does stacks.b || stacks.c contain [4, 3, 2, 1]? If yes, you won!
 
 }
 
