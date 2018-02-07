@@ -8,4 +8,4 @@ const printListOfOlympians = (array) => {
 
 printListOfOlympians("Shawn White, Gus Kenworthy, Simone Biles, Shelby Inloes, Justin Oswald");
 
-//commit 2
+//commit 2 & 3
