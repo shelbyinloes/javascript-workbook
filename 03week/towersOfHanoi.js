@@ -24,6 +24,8 @@ let stacks = {
   c: []
 };
 
+let movePeg;
+
 // console.log(Object.values(stacks.a));
 
 // console.log(stacks.a);
@@ -65,13 +67,26 @@ function checkForWin() {
   }
 }
 
-// checkForWin();
 
-
+//THIS FUNCTION MOVES PEGS, INCORRECTLY
 function towersOfHanoi(startStack, endStack) {
   // Your code here
   // What is the startStack value and what is the endStack value so we can do something with it
-
+  if(stacks[startStack].length != -1){
+    stacks[startStack][endStack] = movePeg;
+    if (checkForWin()) {
+      console.log("WIN!");
+      stacks = {
+        a: [4, 3, 2, 1],
+        b: [],
+        c: []
+      };
+      return true;
+    } else {
+      let popPeg = stacks[startStack].pop();
+      stacks[endStack].unshift(popPeg);
+    }
+  }
 }
 
 function getPrompt() {
