@@ -50,8 +50,15 @@ function isLegal() {
 function checkForWin() {
   // Your code here
   // Does stacks.b || stacks.c contain [4, 3, 2, 1]? If yes, you won!
-
-}
+  if(stacks.b.length === 4) {
+    console.log("Stack B is full!");
+    return true;
+  } else if (stacks.c.length === 4) {
+    console.log("Stack C is full!");
+    return true;
+  } else {
+    return false;
+  }
 
 function towersOfHanoi(startStack, endStack) {
   // Your code here
