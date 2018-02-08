@@ -84,4 +84,3 @@ getPrompt();
 // If start stack input does not equal a, b, or c, invalid input 
 // Should check for win 
 
-
