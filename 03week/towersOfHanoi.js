@@ -26,31 +26,26 @@ let stacks = {
 
 let movePeg;
 
-function printStacks() {
+const printStacks = () => {
   console.log("a: " + stacks.a);
   console.log("b: " + stacks.b);
   console.log("c: " + stacks.c);
 }
 
-function movePiece(startStack, endStack) {
-  // Your code here
+const movePiece = (startStack, endStack) => {
   // Pop off last item
   // Push that *returned* item to the end stack
   if(stacks[startStack] !== -1){
-    console.log("in first move function");
     let popPeg = stacks[startStack].pop();
     stacks[endStack].push(popPeg);
-    console.log(stacks);
     return true;
   } else {
-    console.log("eeeeeh try again");
     return false;
   }
 
 }
 
-function isLegal() {
-  // Your code here
+const isLegal = (startStack, endStack) => {
   // Start stack must have an array item to pick an item up
   // End stack must have no items or an item of greater value in that space before you add item to it
 
@@ -58,11 +53,8 @@ function isLegal() {
 
 
 //WORKING FUNCTION
-function checkForWin() {
-  // Your code here
+const checkForWin = () => {
   // Does stacks.b || stacks.c contain [4, 3, 2, 1]? If yes, you won!
-  console.log(stacks.b.length);
-  console.log(stacks.c.length);
   if(stacks.b.length === 4) {
     console.log("Stack B wins");
     return true;
@@ -75,9 +67,8 @@ function checkForWin() {
 }
 
 
-//THIS FUNCTION MOVES PEGS, BUT LEAVES UNDEFINED
-function towersOfHanoi(startStack, endStack) {
-  // Your code here
+//Working, but still placing an undefined in the startStack
+const towersOfHanoi = (startStack, endStack) => {
   // What is the startStack value and what is the endStack value so we can do something with it
   movePiece(startStack, endStack);
   if(stacks[startStack].length != -1){
@@ -90,13 +81,6 @@ function towersOfHanoi(startStack, endStack) {
         c: []
       };
       return true;
-    } else {
-      // let startStackLength = (stacks[startStack].length - 1);
-      // let startStackSplice = stacks[startStack].splice(startStackLength);
-      // stacks[endStack].push(startStackSplice);
-      // console.log(stacks);
-      // movePiece(startStack, endStack);
-      console.log("something will show");
     }
   }
 }
