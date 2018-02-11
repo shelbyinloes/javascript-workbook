@@ -24,8 +24,8 @@ let stacks = {
   c: []
 };
 
-let movePeg;
-let popPeg;
+// let movePeg;
+// let popPeg;
 
 const printStacks = () => {
   console.log("a: " + stacks.a);
@@ -33,34 +33,44 @@ const printStacks = () => {
   console.log("c: " + stacks.c);
 }
 
-const movePiece = (startStack, endStack) => {
-  // Pop off last item
-  // Push that *returned* item to the end stack
-  if(stacks[startStack] !== -1){
-    let popPeg = stacks[startStack].pop();
-    stacks[endStack].push(popPeg);
+const isValid = (startStack, endStack) => {
+  //is input a, b, or c?
+  if ((stacks[startStack] === 'a' || 'b' || 'c') && (stacks[endStack] === 'a' || 'b' || 'c')) {
+    console.log("in isValid()");
     return true;
   } else {
-    console.log("failing movePiece");
-    return false;
+    console.log("failing isValid()");
+    return true;
   }
 }
 
 const isLegal = (startStack, endStack) => {
   // Start stack must have an array item to pick an item up
   // End stack must have no items or an item of greater value in that space before you add item to it
-  if (isValid(startStack,endStack)){
-
-  }
+    if (isValid()) {
+      console.log("in isLegal()")
+      return true;
+    } else {
+      console.log("failing isLegal()")
+      return false;
+    }
 }
 
-const isValid = (startStack, endStack) => {
-  //is input a, b, or c?
-  if ((stacks[startStack] === 'a' || 'b' || 'c') && (stacks[endStack] === 'a' || 'b' || 'c')) {
-    console.log("in isValid function");
+const movePiece = (startStack, endStack) => {
+  // Pop off last item
+  // Push that *returned* item to the end stack
+  if(isLegal()){
+    let popStartPeg = stacks[startStack].pop();
+    popStartPeg;
+    // let popEndPeg = stacks[endStack].pop();
+    let pushPeg = stacks[endStack].push(popStartPeg);
+    pushPeg;
+    console.log("in movePiece()");
+    console.log(popStartPeg);
+    // console.log(popEndPeg);
     return true;
   } else {
-    console.log("invalid function");
+    console.log("failing movePiece");
     return false;
   }
 }
@@ -86,10 +96,10 @@ const towersOfHanoi = (startStack, endStack) => {
   // What is the startStack value and what is the endStack value so we can do something with it
   // movePiece(startStack, endStack);
   // isValid(startStack, endStack);
-  if(isValid(startStack, endStack)) {
-    movePiece(startStack, endStack);
+  if(movePiece(startStack, endStack)) {
+    // movePiece(startStack, endStack);
     if(stacks[startStack].length != -1){
-      stacks[startStack][endStack] = movePeg;
+      // stacks[startStack][endStack] = movePeg;
       if (checkForWin()) {
         console.log("WIN!");
         stacks = {
