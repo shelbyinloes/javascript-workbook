@@ -61,7 +61,7 @@ const movePiece = (startStack, endStack) => {
     if(endStack === 'a') {
       stacks.a.push(stacks.b.pop());
     } else if(endStack === 'c') {
-      stacks.a.push(stacks.b.pop());     
+      stacks.c.push(stacks.b.pop());     
     }
   } else if (startStack === 'c') {
     if(endStack === 'a') {
@@ -79,10 +79,10 @@ const movePiece = (startStack, endStack) => {
 const checkForWin = () => {
   // Does stacks.b || stacks.c contain [4, 3, 2, 1]? If yes, you won!
   if(stacks.b.length === 4) {
-    console.log("Stack B wins");
+    console.log("You won on stack 'B'!");
     return true;
   } else if (stacks.c.length === 4){
-    console.log("Stack C wins");
+    console.log("You won on stack 'C'!");
     return true;
   } else {
     return false;
@@ -92,12 +92,13 @@ const checkForWin = () => {
 
 //Working, but still placing an undefined in the startStack
 const towersOfHanoi = (startStack, endStack) => {
-  // What is the startStack value and what is the endStack value so we can do something with it
+  // What is the startStack value and what is the endStack value so we can do something with it (movePiece)
+  // After the move, check for win before leaving function.
   if(isValid(startStack, endStack)) {
     movePiece(startStack, endStack);
-    return checkForWin();
+    checkForWin();
   } else {
-    console.log('Invalid Move');
+    console.log("Move doesn't work, try again");
     return false;
   }
 }
