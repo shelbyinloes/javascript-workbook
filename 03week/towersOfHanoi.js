@@ -5,7 +5,7 @@
 // Working is legal function (17)
 // Working check for win function (17)
 // Working reset function (17)
-// Legal Move function  ( 8)
+// Legal Move function  (8)
 // Clean PR , es6 syntax (8)
 // Function plan in comments (each function has a stated purpose and method) (8)
 // At least 2 tests (8)
@@ -24,8 +24,6 @@ let stacks = {
   c: []
 };
 
-// let movePeg;
-// let popPeg;
 
 const printStacks = () => {
   console.log("a: " + stacks.a);
@@ -35,42 +33,43 @@ const printStacks = () => {
 
 const isValid = (startStack, endStack) => {
   //is input a, b, or c?
+  //check to see if the endStack has anything in it (stacks[endStack].length) for valid move
+  //if the endStack has something in it, make sure the last item in array (.slice(-1) is greater than the item you are moving)
   if ((stacks[startStack] === 'a' || 'b' || 'c') && (stacks[endStack] === 'a' || 'b' || 'c')) {
-    console.log("in isValid()");
+    if ((stacks[endStack].length === 0) || (stacks[endStack].slice(-1) > stacks[startStack].slice(-1))) {
+      return true;
+    } else {
+      return false;
+    }
     return true;
   } else {
-    console.log("failing isValid()");
-    return true;
+    return false;
   }
 }
 
-const isLegal = (startStack, endStack) => {
-  // Start stack must have an array item to pick an item up
-  // End stack must have no items or an item of greater value in that space before you add item to it
-    if (isValid()) {
-      console.log("in isLegal()")
-      return true;
-    } else {
-      console.log("failing isLegal()")
-      return false;
-    }
-}
 
 const movePiece = (startStack, endStack) => {
-  // Pop off last item
-  // Push that *returned* item to the end stack
-  if(isLegal()){
-    let popStartPeg = stacks[startStack].pop();
-    popStartPeg;
-    // let popEndPeg = stacks[endStack].pop();
-    let pushPeg = stacks[endStack].push(popStartPeg);
-    pushPeg;
-    console.log("in movePiece()");
-    console.log(popStartPeg);
-    // console.log(popEndPeg);
-    return true;
+  // Pop off last item from startStack
+  // Push that *returned* item to the endStack
+  if(startStack === 'a') {
+    if(endStack === 'b') {
+      stacks.b.push(stacks.a.pop());
+    } else if(endStack === 'c') {
+      stacks.c.push(stacks.a.pop());
+    }
+  } else if (startStack === 'b') {
+    if(endStack === 'a') {
+      stacks.a.push(stacks.b.pop());
+    } else if(endStack === 'c') {
+      stacks.a.push(stacks.b.pop());     
+    }
+  } else if (startStack === 'c') {
+    if(endStack === 'a') {
+      stacks.a.push(stacks.c.pop());
+    } else if(endStack === 'b') {
+      stacks.b.push(stacks.c.pop());
+    }
   } else {
-    console.log("failing movePiece");
     return false;
   }
 }
@@ -94,24 +93,11 @@ const checkForWin = () => {
 //Working, but still placing an undefined in the startStack
 const towersOfHanoi = (startStack, endStack) => {
   // What is the startStack value and what is the endStack value so we can do something with it
-  // movePiece(startStack, endStack);
-  // isValid(startStack, endStack);
-  if(movePiece(startStack, endStack)) {
-    // movePiece(startStack, endStack);
-    if(stacks[startStack].length != -1){
-      // stacks[startStack][endStack] = movePeg;
-      if (checkForWin()) {
-        console.log("WIN!");
-        stacks = {
-          a: [4, 3, 2, 1],
-          b: [],
-          c: []
-        };
-        return true;
-      }
-    }
+  if(isValid(startStack, endStack)) {
+    movePiece(startStack, endStack);
+    return checkForWin();
   } else {
-    console.log("woah, hang on there");
+    console.log('Invalid Move');
     return false;
   }
 }
