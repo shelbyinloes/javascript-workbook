@@ -113,10 +113,24 @@ function getPrompt() {
   });
 }
 
-getPrompt();
+// getPrompt();
 
 //Tests
 // If my start stack has nothing in it, dont allow that move
 // If stack.c has all items in it, you should win
 // If start stack input does not equal a, b, or c, invalid input
 // Should check for win
+
+if (typeof describe === 'function') {
+
+  describe('#towersOfHanoi(startStack, endStack)', () => {
+    it('should move the peg', () => {
+      towersOfHanoi('a', 'b');
+      assert.deepequal(stacks = { a: [4, 3, 2], b: [1], c: [] });
+    });
+  });
+} else {
+
+  getPrompt();
+
+}
