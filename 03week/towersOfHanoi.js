@@ -123,12 +123,42 @@ function getPrompt() {
 
 if (typeof describe === 'function') {
 
-  describe('#towersOfHanoi(startStack, endStack)', () => {
-    it('should move the peg', () => {
+  describe('#towersOfHanoi()', () => {
+    it('should move the number', () => {
       towersOfHanoi('a', 'b');
-      assert.deepequal(stacks = { a: [4, 3, 2], b: [1], c: [] });
+      assert.deepEqual(stacks, { 
+        a: [4, 3, 2], 
+        b: [1], 
+        c: [] });
     });
   });
+
+  describe('#checkForWin()', () => {
+  it('should check win in B stack', () => {
+    stacks = {
+      a: [],
+      b: [4, 3, 2, 1],
+      c: []
+    };
+    assert.equal(checkForWin(), true);
+  });
+  it('should check win in C stack', () => {
+    stacks = {
+      a: [],
+      b: [],
+      c: [4, 3, 2, 1]
+    };
+    assert.equal(checkForWin(), true);
+  });
+});
+  // it('should check for illegal move', () => {
+  //   stacks = {
+  //     a: [4, 3, 2, 1],
+  //     b: [],
+  //     c: []
+  //   };
+  //   assert.equal(diagonalWin(), true);
+  // });
 } else {
 
   getPrompt();
