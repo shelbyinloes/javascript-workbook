@@ -31,17 +31,24 @@ const printStacks = () => {
   console.log("c: " + stacks.c);
 }
 
+const isAbc = (startStack, endStack) => {
+  if ((startStack === 'a' || startStack === 'b' || startStack === 'c') && (endStack === 'a' || endStack === 'b' || endStack === 'c')) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 const isValid = (startStack, endStack) => {
   //is input a, b, or c?
   //check to see if the endStack has anything in it (stacks[endStack].length) for valid move
   //if the endStack has something in it, make sure the last item in array (.slice(-1) is greater than the item you are moving)
-  if ((stacks[startStack] === 'a' || 'b' || 'c') && (stacks[endStack] === 'a' || 'b' || 'c')) {
+  if (isAbc(startStack, endStack)) {
     if ((stacks[endStack].length === 0) || (stacks[endStack].slice(-1) > stacks[startStack].slice(-1))) {
       return true;
     } else {
       return false;
     }
-    return true;
   } else {
     return false;
   }
@@ -113,7 +120,6 @@ function getPrompt() {
   });
 }
 
-// getPrompt();
 
 //Tests
 // If my start stack has nothing in it, dont allow that move
@@ -151,14 +157,7 @@ if (typeof describe === 'function') {
     assert.equal(checkForWin(), true);
   });
 });
-  // it('should check for illegal move', () => {
-  //   stacks = {
-  //     a: [4, 3, 2, 1],
-  //     b: [],
-  //     c: []
-  //   };
-  //   assert.equal(diagonalWin(), true);
-  // });
+
 } else {
 
   getPrompt();
