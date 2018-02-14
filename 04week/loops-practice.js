@@ -74,3 +74,12 @@ const strCurrencies = () => {
   strCurrencies();
 
 //create a function that takes in an object and console logs the result of the object's multiplyByTen method on each of the exchange rates. Use latestExchangeRate as an example to test your function
+
+const rateTimesTen = () => {
+    let priceMultiplier = Object.values(latestExchangeRate.rates);
+      priceMultiplier.forEach((item, key) => {
+      console.log(priceMultiplier[key] * 10);
+    })
+  }
+  
+  rateTimesTen();
