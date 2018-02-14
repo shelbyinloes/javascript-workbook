@@ -7,11 +7,22 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+const findFirstVowelPosition = (word) => {
+  for (var i=0; i<word.length; i++){
+    if("aeiou".indexOf(word[i]) !== -1) {
+      return (i);
+    }
+  }
+}
 
-function pigLatin(word) {
-
-  // Your code here
-
+const pigLatin = (word) => {
+  const formattedWord = word.trim();
+  const firstPosition = findFirstVowelPosition(formattedWord);
+  if (firstPosition > 0) {
+    return (formattedWord.slice(firstPosition) + formattedWord.slice(0, firstPosition) + 'ay').toLowerCase();
+  }else{
+    return (formattedWord + 'yay').toLowerCase();
+  }
 }
 
 
