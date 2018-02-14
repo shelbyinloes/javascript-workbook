@@ -63,4 +63,14 @@ availableCurrencies();
 
 // create a function that console logs a string with the currency and the currency rate for each currency in a given object. For example, 'AUD is at a 1.2742 conversion rate'. Use latestExchangeRate as an example to test your function
 
+const strCurrencies = () => {
+    let rates = Object.keys(latestExchangeRate.rates);
+    let price = Object.values(latestExchangeRate.rates);
+    const rateLoop = rates.forEach((item, key) => {
+      console.log(rates[key] +" is at a " + price[key] + " conversion rate.");
+    })
+  };
+  
+  strCurrencies();
+
 //create a function that takes in an object and console logs the result of the object's multiplyByTen method on each of the exchange rates. Use latestExchangeRate as an example to test your function
