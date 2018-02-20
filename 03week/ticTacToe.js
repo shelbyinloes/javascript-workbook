@@ -25,22 +25,80 @@ function printBoard() {
 
 function horizontalWin() {
   // Your code here
+  // [0][0] && [0][1] && [0][2]
+  // [1][0] && [1][1] && [1][2]
+  // [2][0] && [2][1] && [2][2]
+  if((board[0][0] === playerTurn) && (board[0][1] === playerTurn) && (board[0][2] === playerTurn)) {
+    return true;
+  } else if ((board[1][0] === playerTurn) && (board[1][1] === playerTurn) && (board[1][2] === playerTurn)){
+    return true;
+  } else if ((board[2][0] === playerTurn) && (board[2][1] === playerTurn) && (board[2][2] === playerTurn)){
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function verticalWin() {
   // Your code here
+  // [0][0] && [1][0] && [2][0]
+  // [0][1] && [1][1] && [2][1]
+  // [0][2] && [1][2] && [2][2]
+  if((board[0][0] === playerTurn) && (board[1][0] === playerTurn) && (board[2][0] === playerTurn)) {
+    return true;
+  } else if ((board[0][1] === playerTurn) && (board[1][1] === playerTurn) && (board[2][1] === playerTurn)){
+    return true;
+  } else if ((board[0][2] === playerTurn) && (board[1][2] === playerTurn) && (board[2][2] === playerTurn)){
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function diagonalWin() {
   // Your code here
+  // [0][0] && [1][1] && [2][2]
+  // [0][2] && [1][1] && [2][0]
+  if((board[0][0] === playerTurn) && (board[1][1] === playerTurn) && (board[2][2] === playerTurn)) {
+    return true;
+  } else if ((board[0][2] === playerTurn) && (board[1][1] === playerTurn) && (board[2][0] === playerTurn)){
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function checkForWin() {
-  // Your code here
+  if(horizontalWin() || verticalWin() || diagonalWin()){
+    return true;
+  }else{
+    return false;
+  }
 }
 
 function ticTacToe(row, column) {
-  // Your code here
+  if(board[row][column] === ' '){
+    board[row][column] = playerTurn;
+    if (checkForWin()) {
+      console.log("Player " + playerTurn + " wins!");
+      board = [
+        [' ', ' ', ' '],
+        [' ', ' ', ' '],
+        [' ', ' ', ' ']
+      ];
+      return true;
+      // playerTurn = "X";
+    }else{
+      console.log("bye");
+      if(playerTurn === "X"){
+        playerTurn = "O";
+      }else{
+        playerTurn = "X";
+      }
+    }
+  }else{
+    return false;
+  }
 }
 
 function getPrompt() {
