@@ -32,7 +32,7 @@ const printStacks = () => {
 }
 
 const isAbc = (startStack, endStack) => {
-  if ((startStack === 'a' || startStack === 'b' || startStack === 'c') && (endStack === 'a' || endStack === 'b' || endStack === 'c')) {
+  if ((startStack === 'a' || 'b' || 'c') && (endStack === 'a' || 'b' || 'c')) {
     return true;
   } else {
     return false;
@@ -44,11 +44,7 @@ const isValid = (startStack, endStack) => {
   //check to see if the endStack has anything in it (stacks[endStack].length) for valid move
   //if the endStack has something in it, make sure the last item in array (.slice(-1) is greater than the item you are moving)
   if (isAbc(startStack, endStack)) {
-    if ((stacks[endStack].length === 0) || (stacks[endStack].slice(-1) > stacks[startStack].slice(-1))) {
-      return true;
-    } else {
-      return false;
-    }
+    return isAbc(startStack, endStack) && ((stacks[endStack].length === 0) || (stacks[endStack].slice(-1) > stacks[startStack].slice(-1)))
   } else {
     return false;
   }
