@@ -50,7 +50,7 @@ const isValid = (startStack, endStack) => {
   }
 }
 
-
+//need to reconfigure still
 const movePiece = (startStack, endStack) => {
   // Pop off last item from startStack
   // Push that *returned* item to the endStack
@@ -81,11 +81,8 @@ const movePiece = (startStack, endStack) => {
 //WORKING FUNCTION
 const checkForWin = () => {
   // Does stacks.b || stacks.c contain [4, 3, 2, 1]? If yes, you won!
-  if(stacks.b.length === 4) {
-    console.log("You won on stack 'B'!");
-    return true;
-  } else if (stacks.c.length === 4){
-    console.log("You won on stack 'C'!");
+  if(stacks.b.length === 4 || stacks.c.length ===4) {
+    console.log("You won!!!");
     return true;
   } else {
     return false;
