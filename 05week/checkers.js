@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 
 
 function Checker() {
-  // Your code here
+  
 }
 
 function Board() {
@@ -41,7 +41,7 @@ function Board() {
           rowOfCheckers.push(this.grid[row][column].symbol);
         } else {
           // just push in a blank space
-          rowOfCheckers.push(' ');
+          rowOfCheckers.push('o');
         }
       }
       // join the rowOfCheckers array to a string, separated by a space
