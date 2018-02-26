@@ -2,8 +2,10 @@
 
 const assert = require('assert');
 
+const arr = [1, 2, 3];
+
 function forEach(arr, callback) {
-  // Your code here
+  
 }
 
 function map(arr, callback) {
