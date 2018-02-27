@@ -8,9 +8,13 @@ const rl = readline.createInterface({
 });
 
 
-function Checker() {
-  
+function Checker(symbol, name) {
+  this.symbol = symbol;
+  this.name = name;
 }
+
+// const oh = new Checker('O', 'oh');
+// const ex = new Checker('X', 'ex');
 
 function Board() {
   this.grid = [];
@@ -53,6 +57,39 @@ function Board() {
   };
 
   // Your code here
+
+  this.createCheckers = function () {
+    const ohStart = [
+      [0, 1], [0, 3], [0, 5],
+      [0, 7], [1, 0], [1, 2],
+      [1, 4], [1, 6], [2, 1],
+      [2, 3], [2, 5], [2, 7]
+    ]
+
+    for (let i = 0; i < 12; i++) {
+      let ohRow = ohPieces[i][0];
+      let ohColumn = ohPieces[i][1];
+      let ohChecker = new Checker('oh');
+      this.checkers.push(ohChecker);
+      this.grid[ohRow][ohColumn] = ohChecker;
+    }
+
+    const exStart = [
+      [5, 0], [5, 2], [5, 4],
+      [5, 6], [6, 1], [6, 3],
+      [6, 5], [6, 7], [7, 0],
+      [7, 2], [7, 4], [7, 6]
+    ]
+
+    for (let i = 0; i < 12; i++) {
+      let exRow = exPieces[i][0];
+      let exColumn = exPieces[i][1];
+      let exChecker = new Checker('ex');
+      this.checkers.push(exChecker);
+      this.grid[exRow][exColumn] = exChecker;
+    }
+
+  }
 }
 function Game() {
 
