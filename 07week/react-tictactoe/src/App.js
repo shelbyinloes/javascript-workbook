@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Board from './Board.js';
 import logo from './logo.svg';
 import './App.css';
 
@@ -8,23 +7,46 @@ class TicTacToe extends React.Component {
     super(props);
     this.state = {
       board: [
-        [0, 1, 2],
-        [0, 1, 2],
-        [0, 1, 2]
-      ],
-      playerTurn: 0, 
-      win: 0, 
+        [null, null, null],
+        [null, null, null],
+        [null, null, null]
+      ]
     }
   }
 
   //functions go here
 
   render() {
+    const rowStyle = {
+      backgroundColor: 'pink',
+      color: 'red',
+      height: '120px',
+      fontSize: '40px',
+      margin: '5px auto',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center'
+    }
+      
+    const boxStyle = {
+      height: '110px',
+      width: '110px',
+      backgroundColor: 'pink',
+      margin: 'auto 20px',
+      border: '1px solid black'
+    }
+
     return (
       <div>
-        board.map((row, i) => {
-          <board Row/>
-        })
+        {this.state.board.map((row, index) => {
+          return <div key={index} style={rowStyle}>
+
+            {row.map((box, item) => {
+              return <div key={item} style={boxStyle}>{row[item]}</div>
+            })}
+
+          </div>;
+        })}
       </div>
     );
   }
