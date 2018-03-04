@@ -22,7 +22,15 @@ console.log(sumEvens);
 //   9: 0
 // }
 
-const numCount = {};
+const numCount = nums.reduce((num, times) => {
+    if (typeof num[times] == 'undefined') {
+        num[times] = 1;
+      } else {
+        num[times] += 1;
+      }
+    
+      return num;
+    }, {});
 
 console.log(numCount)
 
