@@ -16,6 +16,7 @@ class TicTacToe extends React.Component {
 
   //functions go here
 
+
   render() {
     const rowStyle = {
       backgroundColor: 'pink',
@@ -42,7 +43,7 @@ class TicTacToe extends React.Component {
           return <div key={index} style={rowStyle}>
 
             {row.map((box, item) => {
-              return <div key={item} style={boxStyle}>{row[item]}</div>
+              return <div onClick={handleClick} key={item} style={boxStyle}>{row[item]}</div>
             })}
 
           </div>;
