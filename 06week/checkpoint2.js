@@ -6,7 +6,9 @@ const nums = strNums.map((num) => {
 });
 
 // Find the sum of the even values
-const sumEvens;
+const sumEvens = strNums.filter((even) => {
+    return even % 2 === 0;
+});
 
 console.log(sumEvens);
 
