@@ -5,6 +5,8 @@ const nums = strNums.map((num) => {
     return Number(num);
 });
 
+console.log(nums);
+
 // Find the sum of the even values
 const sumEvens = strNums.filter((even) => {
     return even % 2 === 0;
@@ -32,10 +34,16 @@ const numCount = nums.reduce((num, times) => {
       return num;
     }, {});
 
-console.log(numCount)
+console.log(numCount);
 
 
 // Find the index of the first "Austin" value (the value plus its index equals 512)
-const atxIdx;
+const atxIdx = nums.forEach((value, index) => {
+    if(value + index === 512){
+        return "You found one"
+    }else{
+        return false
+    }
+});
 
 console.log(`index: ${atxIdx}, value: ${nums[atxIdx]}`);
