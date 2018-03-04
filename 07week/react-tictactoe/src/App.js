@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
 
 class TicTacToe extends React.Component {
   constructor(props) {
@@ -16,14 +15,12 @@ class TicTacToe extends React.Component {
 
   //functions go here
 
-
   render() {
     const rowStyle = {
-      backgroundColor: 'pink',
       color: 'red',
       height: '120px',
       fontSize: '40px',
-      margin: '5px auto',
+      margin: '10px auto',
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center'
@@ -33,21 +30,30 @@ class TicTacToe extends React.Component {
       height: '110px',
       width: '110px',
       backgroundColor: 'pink',
-      margin: 'auto 20px',
+      margin: 'auto 10px',
       border: '1px solid black'
+    }
+
+    const center = {
+      textAlign: 'center',
     }
 
     return (
       <div>
+        <h1 style={center}> Tic-Tac-Toe </h1>
+
         {this.state.board.map((row, index) => {
           return <div key={index} style={rowStyle}>
 
             {row.map((box, item) => {
-              return <div onClick={handleClick} key={item} style={boxStyle}>{row[item]}</div>
+              return <div key={item} style={boxStyle}>{row[item]}</div>
             })}
 
           </div>;
         })}
+        <div style={center}>
+          <button>Reset Game Board</button>
+        </div>
       </div>
     );
   }
