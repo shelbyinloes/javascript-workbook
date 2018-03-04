@@ -13,7 +13,17 @@ class TicTacToe extends React.Component {
     }
   }
 
+
   //functions go here
+  handleResetClick(){
+    console.log('This will eventually reset game')
+  }
+  
+  handlePlayClick=()=>{
+    console.log('This will eventually make a move')
+    this.setState({board: [...this.state.board]})
+  }
+
 
   render() {
     const rowStyle = {
@@ -43,7 +53,7 @@ class TicTacToe extends React.Component {
         <h1 style={center}> Tic-Tac-Toe </h1>
 
         {this.state.board.map((row, index) => {
-          return <div key={index} style={rowStyle}>
+          return <div onClick={this.handlePlayClick} key={index} style={rowStyle}>
 
             {row.map((box, item) => {
               return <div key={item} style={boxStyle}>{row[item]}</div>
@@ -52,7 +62,7 @@ class TicTacToe extends React.Component {
           </div>;
         })}
         <div style={center}>
-          <button>Reset Game Board</button>
+          <button onClick={this.handleResetClick}>Reset Game Board</button>
         </div>
       </div>
     );
