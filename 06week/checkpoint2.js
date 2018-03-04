@@ -37,7 +37,7 @@ console.log(numCount)
 
 // Find the index of the first "Austin" value (the value plus its index equals 512)
 const atxIdx  = nums.findIndex((value, index) => {
-    return (value + index === 19)
+    return (value + index === 512)
   });
 
 console.log(`index: ${atxIdx}, value: ${nums[atxIdx]}`);
