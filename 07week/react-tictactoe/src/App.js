@@ -27,9 +27,8 @@ class TicTacToe extends Component {
     if ( !board ) {
       alert('cant move here')
     } else {
-    // this.setState({board})      
+      this.nextPlayer();      
     }
-    this.nextPlayer();
   }
 
   nextPlayer() {
@@ -56,7 +55,6 @@ class TicTacToe extends Component {
 
   render() {
     const rowStyle = {
-      backgroundColor: 'red',
       height: '120px',
       fontSize: '40px',
       margin: '10px auto',
@@ -70,7 +68,9 @@ class TicTacToe extends Component {
       width: '110px',
       backgroundColor: 'pink',
       margin: 'auto 10px',
-      border: '1px solid black'
+      border: '1px solid black', 
+      textAlign: 'center', 
+      fontSize: '95px'
     }
 
     const center = {
@@ -92,6 +92,7 @@ class TicTacToe extends Component {
           </div>;
         })}
         <div style={center}>
+          <h3>Current Player: {this.state.currentPlayer}</h3>
           <button onClick={this.handleResetClick}>Reset Game Board</button>
         </div>
       </div>
