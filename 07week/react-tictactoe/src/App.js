@@ -27,16 +27,26 @@ class TicTacToe extends Component {
     if ( !board ) {
       alert('cant move here')
     } else {
-      this.nextPlayer();      
+      // this.checkForWin();
+      this.nextPlayer();     
     }
   }
 
-  nextPlayer() {
+  nextPlayer(board, clickedBox) {
     console.log('next player called')
     let player = this.state.currentPlayer;
     player = player === 'X' ? 'O' : 'X'
     this.setState({currentPlayer: player}) 
   }
+
+  checkForWin() {
+    // console.log(clickedBox.move)
+    if(this.state.board[0][0].move && this.state.board[0][1].move && this.state.board[0][2].move){
+      alert('You Win!')
+      //only checking for if it has something in it, i need to check for .move values
+    }
+  }
+
 
   //need to make sure that if it is an invalid move, it does not switch the player turn 
 
@@ -46,12 +56,13 @@ class TicTacToe extends Component {
     return board.map((row) => {
       row.map((currentBox) => {
         if(currentBox.id === clickedBox.id && currentBox.move === ''){
-          console.log('updated')
           currentBox.move = this.state.currentPlayer
+          console.log(currentBox.move)
         } 
       })
     })
   }
+
 
   render() {
     const rowStyle = {
