@@ -5,11 +5,9 @@ class TicTacToe extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+
     }
   }
-
-
   //functions go here
 
 
