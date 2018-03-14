@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import Announcement from './Announcement';
+import ResetButton from './ResetButton';
+import Tile from './Tile';
 
 
 
@@ -11,9 +14,15 @@ class App extends Component {
         ' ', ' ', ' ',
         ' ', ' ', ' ',
         ' ', ' ', ' '
-      ]
+      ], 
+      turn: 'X'
     }
   }
+
+  updateBoard(loc, player) {
+
+  }
+
   render() {
     return (
       <div className="container">
@@ -22,9 +31,17 @@ class App extends Component {
           <Announcement />
           <ResetButton />
         </div>
-        {this.state.gameBoard.map(function(value, i){
-          <Tile />
-        })}
+          {this.state.gameBoard.map(function(value, i){
+            return(
+              <Tile 
+                key={i}
+                Loc={i}
+                value={value}
+                updateBoard={this.updateBoard.bind(this)}
+                turn={this.state.turn}
+              />
+            )
+          }.bind(this))}
       </div>
     );
   }
