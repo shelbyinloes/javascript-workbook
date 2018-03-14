@@ -15,10 +15,11 @@ class TicTacToe extends Component {
   }
 
 
+
   //functions go here
   handleResetClick(){
     console.log('This will eventually reset game')
-    
+    alert('Refresh page to reset game for now');
   }
   
   handlePlayClick(clickedBox, e) {
@@ -38,11 +39,13 @@ class TicTacToe extends Component {
     let player = this.state.currentPlayer;
     player = player === 'X' ? 'O' : 'X'
     this.setState({currentPlayer: player}) 
+    this.checkForWin();
   }
 
   checkForWin() {
     // console.log(clickedBox.move)
     //only checking for if it has something in it, i need to check for .move values
+    console.log('in checkforwin');
   }
 
 
