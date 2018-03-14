@@ -10,16 +10,22 @@ class TicTacToe extends Component {
         [{id: 3, move: ''}, {id: 4, move: ''}, {id: 5, move: ''}],
         [{id: 6, move: ''}, {id: 7, move: ''}, {id: 8, move: ''}]
       ],
-      currentPlayer: 'X',
+      currentPlayer: 'X'
     }
   }
 
 
 
   //functions go here
-  handleResetClick(){
-    console.log('This will eventually reset game')
-    alert('Refresh page to reset game for now');
+  handleResetClick= () => {
+    this.setState({
+      board: [
+        [{id: 0, move: ''}, {id: 1, move: ''}, {id: 2, move: ''}],
+        [{id: 3, move: ''}, {id: 4, move: ''}, {id: 5, move: ''}],
+        [{id: 6, move: ''}, {id: 7, move: ''}, {id: 8, move: ''}]
+      ],
+      currentPlayer: 'X'
+    })
   }
   
   handlePlayClick(clickedBox, e) {
