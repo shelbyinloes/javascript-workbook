@@ -65,9 +65,9 @@ function Board() {
     ]
 
     for (let i = 0; i < 12; i++) {
-      let ohRow = ohPieces[i][0];
-      let ohColumn = ohPieces[i][1];
-      let ohChecker = new Checker('O');
+      const ohRow = ohPieces[i][0];
+      const ohColumn = ohPieces[i][1];
+      const ohChecker = new Checker('O');
       this.checkers.push(ohChecker);
       this.grid[ohRow][ohColumn] = ohChecker;
     }
@@ -80,9 +80,9 @@ function Board() {
     ]
 
     for (let i = 0; i < 12; i++) {
-      let exRow = exPieces[i][0];
-      let exColumn = exPieces[i][1];
-      let exChecker = new Checker('X');
+      const exRow = exPieces[i][0];
+      const exColumn = exPieces[i][1];
+      const exChecker = new Checker('X');
       this.checkers.push(exChecker);
       this.grid[exRow][exColumn] = exChecker;
     }
@@ -95,9 +95,9 @@ const isAValidInput = (start, finish) => {
   const startColumn = parseInt(start.charAt(1));
   const finishRow = parseInt(finish.charAt(0));
   const finishColumn = parseInt(finish.charAt(1));
-  let startIsValid = (startRow >= 0 && startRow < 8) &&
+  const startIsValid = (startRow >= 0 && startRow < 8) &&
   (startColumn >= 0 && startColumn < 8);
-  let finishIsValid = (finishRow >= 0 && finishRow < 8) &&
+  const finishIsValid = (finishRow >= 0 && finishRow < 8) &&
   (finishColumn >= 0 && finishColumn < 8);
   return (startIsValid && finishIsValid);
 }
@@ -107,8 +107,8 @@ const isALegalMove = (start, finish) => {
   const startColumn = parseInt(start.charAt(1));
   const finishRow = parseInt(finish.charAt(0));
   const finishColumn = parseInt(finish.charAt(1));
-  let goodRowValue = (Math.abs(finishRow - startRow) <= 2);
-  let goodColumnValue = (Math.abs(finishColumn - startColumn) <= 2);
+  const goodRowValue = (Math.abs(finishRow - startRow) <= 2);
+  const goodColumnValue = (Math.abs(finishColumn - startColumn) <= 2);
   return (goodRowValue && goodColumnValue);
 }
 
@@ -129,8 +129,8 @@ function Game() {
       this.board.grid[finishRow][finishColumn] = this.board.grid[startRow][startColumn];
       this.board.grid[startRow][startColumn] = null;
       if (Math.abs(finishRow - startRow) === 2) {
-        let jumpedRow = finishRow - startRow > 0 ? startRow + 1 : finishRow + 1;
-        let jumpedColumn = finishColumn - startColumn > 0 ? startColumn + 1 : finishColumn + 1;
+        const jumpedRow = finishRow - startRow > 0 ? startRow + 1 : finishRow + 1;
+        const jumpedColumn = finishColumn - startColumn > 0 ? startColumn + 1 : finishColumn + 1;
         this.board.grid[jumpedRow][jumpedColumn] = null;
         this.board.checkers.pop();
       }
