@@ -6,9 +6,9 @@ class TicTacToe extends Component {
     super(props);
     this.state = {
       board: [
-        [{id: 0, move: ''}, {id: 1, move: ''}, {id: 2, move: ''}],
-        [{id: 3, move: ''}, {id: 4, move: ''}, {id: 5, move: ''}],
-        [{id: 6, move: ''}, {id: 7, move: ''}, {id: 8, move: ''}]
+        {move: ''}, {move: ''}, {move: ''},
+        {move: ''}, {move: ''}, {move: ''},
+        {move: ''}, {move: ''}, {move: ''}
       ],
       currentPlayer: 'X'
     }
@@ -17,7 +17,7 @@ class TicTacToe extends Component {
 
 
   //functions go here
-  handleResetClick= () => {
+  handleResetClick = () => {
     this.setState({
       board: [
         [{id: 0, move: ''}, {id: 1, move: ''}, {id: 2, move: ''}],
@@ -28,11 +28,11 @@ class TicTacToe extends Component {
     })
   }
   
-  handlePlayClick(clickedBox, e) {
+  handlePlayClick(clickedBox, item, e) {
     let board = this.state.board;
-    board = this.changeBoard(board, clickedBox);
-    console.log(board);
-    if ( !board ) {
+    board = this.changeBoard(board, item, clickedBox);
+    console.log(this.state.board);
+    if ( board ) {
       alert('cant move here')
     } else {
       // this.checkForWin();
@@ -44,8 +44,8 @@ class TicTacToe extends Component {
     console.log('next player called')
     let player = this.state.currentPlayer;
     player = player === 'X' ? 'O' : 'X'
-    this.setState({currentPlayer: player}) 
-    this.checkForWin();
+    this.setState({currentPlayer: player}); 
+    // this.checkForWin();
   }
 
   checkForWin() {
@@ -57,31 +57,31 @@ class TicTacToe extends Component {
 
   //need to make sure that if it is an invalid move, it does not switch the player turn 
 
-  changeBoard(board, clickedBox) {
+  changeBoard(board, item, clickedBox) {
     console.log(clickedBox)
-    if ( clickedBox.move !== '' ) return false
-    return board.map((row) => {
-      row.map((currentBox) => {
-        if(currentBox.id === clickedBox.id){
+    if ( clickedBox.move !== '' ){
+      return board.map((item, currentBox) => {
+        if(currentBox.move === ''){
           currentBox.move = this.state.currentPlayer
-          console.log(currentBox.move)
-          console.log(this.state.board)
         } 
       })
-    })
+    }
   }
 
-  
 
 
   render() {
     const rowStyle = {
-      height: '120px',
+      height: '110px',
+      width: '110px',
       fontSize: '40px',
       margin: '10px auto',
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      textAlign: 'center', 
+      fontSize: '95px',
+      backgroundColor: 'blue'
     }
       
     const boxStyle = {
@@ -102,14 +102,8 @@ class TicTacToe extends Component {
       <div>
         <h1 style={center}> Tic-Tac-Toe </h1>
 
-        {this.state.board.map((row, index) => {
-          // console.log(row)
-          return <div  key={index} style={rowStyle}>
-            {row.map((box, item) => {
-            // console.log('this is the index', index)              
-              return <div value={"test"} key={item} onClick={this.handlePlayClick.bind(this, box)} style={boxStyle}>{box.move}</div>
-            })}
-
+        {this.state.board.map((box, item) => {
+          return <div  key={item} style={rowStyle} onClick={this.handlePlayClick.bind(this, box)}>
           </div>;
         })}
         <div style={center}>
