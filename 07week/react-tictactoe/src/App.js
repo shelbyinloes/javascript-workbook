@@ -34,6 +34,7 @@ import React, { Component } from 'react';
 	  }
 	  
 	  handlePlayClick(clickedBox, e) {
+			const playClick = clickedBox
 	    let board = this.state.board;
 	    board = this.changeBoard(board, clickedBox);
 	    if ( !board ) {
@@ -42,27 +43,30 @@ import React, { Component } from 'react';
 	      // this.checkForWin();
 	      this.nextPlayer();     
 	    }
-	  }
-
+		}
 
 	  nextPlayer(board, clickedBox) {
 	    let player = this.state.currentPlayer;
-	    player = player === 'X' ? 'O' : 'X'
+			player = player === 'X' ? 'O' : 'X'
 	    this.setState({currentPlayer: player}) 
-	    this.checkForWin();
+	    // this.checkForWin();
 	  }
 
 
-	  checkForWin(board, clickedBox) {
-	    // console.log(clickedBox.move)
+	  checkForWin(board, clickedBox, move) {
 	    //only checking for if it has something in it, i need to check for .move values
-      console.log('in checkforwin');
-      if(!clickedBox){
-        console.log("grrr")
-      }
-      if(clickedBox == 'X'){
-        console.log("mew")
-      }
+      // console.log('in checkforwin');
+      // if(!clickedBox){
+      //   console.log("grrr")
+      // }
+      // if(clickedBox == 'X'){
+      //   console.log("mew")
+			// }
+			console.log(move)
+			return Object.keys(this.state.board).map((tic, index) => {
+				// console.log(this.state.board.keys)
+				console.log(move)
+			})
 	  }
 
 
@@ -72,18 +76,23 @@ import React, { Component } from 'react';
 
 
 	  changeBoard(board, clickedBox) {
-	    
 	    if ( clickedBox.move !== '' ) return false
 	    return board.map((row) => {
 	      row.map((currentBox) => {
 	        if(currentBox.id === clickedBox.id){
-	          currentBox.move = this.state.currentPlayer
-	          console.log(currentBox.move)
-            console.log(this.state.board)
-            console.log(clickedBox)
+						currentBox.move = this.state.currentPlayer
+						// const move = currentBox.move
+						this.checkForWin();
+						// console.log(move)
+						// return move;
+	          // console.log(currentBox.move)
+            // console.log(this.state.board)
+						// console.log(clickedBox)
+						//JUST TRYING TO GET A PRINTOUT OF MOVES IN AN ARRAY
 	        } 
 	      })
-	    })
+			})
+			
 	  }
 
 
