@@ -2,9 +2,10 @@
     width: 30%;
     height: 150px;
     font-size: 60;
-    background: yellow;
-    border: 8px solid black;
+    background: rgb(226, 167, 167);
+    border: 8px solid rgb(219, 97, 97);
     display: inline-block;
+    float: left;
     text-align: center;
     line-height: 150px;
 }
