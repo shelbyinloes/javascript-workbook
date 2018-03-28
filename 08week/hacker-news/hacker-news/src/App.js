@@ -36,6 +36,13 @@ state = {
     });
   }
 
+  renderStories(){
+    if(this.state.stores){
+    return this.state.stories.map((story, key) => {
+      return <StoryItem key={key} title={story.title} />
+  })
+}
+  }
 
 
   render() {
@@ -48,8 +55,9 @@ state = {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
           {this.state.stories}
+          {this.renderStories()}
         </p>
-        <StoryItem  stories={this.state.stories}/>
+        <StoryItem />
       </div>
     );
   }
