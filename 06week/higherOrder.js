@@ -2,24 +2,50 @@
 
 const assert = require('assert');
 
-function forEach(arr, callback) {
-  // Your code here
+const myForEach = (arr, callback) => {
+
+  for (let i = 0; i < arr.length; i++) {
+    callback();
+  }
+};
+
+
+const map = (arr, callback) => {
+  const mapFormatted = []
+  arr.forEach((item) => {
+    callback(item);
+    mapFormatted.push(callback(item));
+    // console.log(callback(item));
+  });
+  return mapFormatted;
+};
+
+const filter = (arr, callback) => {
+  const filterFormatted = [];
+  for (let j = 0; j < arr.length; j++) {
+    if (arr[j] % 2 === 0) {
+      filterFormatted.push(arr[j]);
+    }
+  }
+  return filterFormatted;
+};
+
+const some = (arr, callback) => {
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i])) {
+      return true
+    }
+  }
+  return false;
 }
 
-function map(arr, callback) {
-  // Your code here
-}
-
-function filter(arr, callback) {
-  // Your code here
-}
-
-function some(arr, callback) {
-  // Your code here
-}
-
-function every(arr, callback) {
-  // Your code here
+const every = (arr, callback) => {
+  for (let i=0; i< arr.length; i++){
+    if (!callback(arr[i])){
+      return false
+    }
+  }
+  return true;
 }
 
 if (typeof describe === 'function') {
@@ -27,7 +53,7 @@ if (typeof describe === 'function') {
   describe('#forEach()', () => {
     it('should call the callback the array.length number of times', () => {
       let count = 0;
-      forEach([1, 2, 3], () => {
+      myForEach([1, 2, 3], () => {
         count++;
       });
       assert.equal(count, 3);
